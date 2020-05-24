@@ -88,8 +88,12 @@ class Game extends React.Component {
         `Go to move # ${move} (${Math.floor(step.move / 3) + 1}|${(step.move % 3) + 1})` :
         'Go to game start';
       return (
-        <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+        <li key={move} className={ this.state.stepNumber === move ? 'current' : null }>
+          <button
+            onClick={() => this.jumpTo(move)}
+          >
+            {desc}
+          </button>
         </li>
       )
     });
@@ -111,7 +115,7 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <ol id="moves-list">{moves}</ol>
         </div>
       </div>
     );
